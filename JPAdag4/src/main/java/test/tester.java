@@ -9,6 +9,8 @@ import entity.Customer;
 import entity.Order1;
 import entity.OrderLine;
 import facade.facade;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.Order;
 
@@ -23,13 +25,15 @@ public class tester {
       
        Customer c = new Customer();
        f.createCustomer("Madsjuste89@gmail.com", "Mads");
+       c = f.findCustomer(1);
        Order1 o = new Order1(c);
        f.createOrder(o);
        f.addOrder(1, 1);
        OrderLine ol = new OrderLine(o,4);
        f.createOL(ol, 1);
        
+      
        
-
+       
     }
 }

@@ -87,7 +87,7 @@ public class facade {
         o.setCustomer(em.find(Customer.class, cid));
         try{
             em.getTransaction().begin();
-            em.persist(o);
+            em.merge(o);
             em.getTransaction().commit();
             }finally{
               em.close();

@@ -62,8 +62,11 @@ public class CustomerFacade {
 
     public void deleteCustomer(int id){
         EntityManager em = getEntityManager();
-        try{
-             em.createNamedQuery("DELETE FROM Customer c WHERE c.ID = :id").executeUpdate();
+        try{ 
+            em.getTransaction().begin();
+            Customer cus = em.find(Customer.class, id);
+             em.remove(cus);
+             em.getTransaction().commit();
             }finally{
               em.close();
            }
